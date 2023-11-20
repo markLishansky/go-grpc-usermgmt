@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package usermgmt;
+
+option go_package = "/";
+
+service UserManagement {
+  rpc CreateNewUser (NewUser) returns (User) {}
+}
+
+message NewUser {
+  string name = 1;
+  int32 age = 2;
+}
+
+message User {
+  string name = 1;
+  int32 age = 2;
+  int32 id = 3;
+  Followers followers = 4;
+}
+
+message Followers {
+  int32 youtube = 1;
+  int32 vk = 2;
+}
