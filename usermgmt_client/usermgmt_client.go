@@ -24,7 +24,7 @@ func main() {
 
 	defer conn.Close()
 	c := pb.NewUserManagementClient(conn)
-
+	fmt.Println("AAA", c)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
@@ -49,5 +49,8 @@ ID: %d`, r.GetName(), r.GetAge(), r.GetId())
 		log.Fatalf("couldn't retrieve users: %v", err)
 	}
 	log.Print("\nUSER LIST: \n")
-	fmt.Printf("r.GetUsers(): %v\n", r.GetUsers())
+	users := r.GetUsers()
+	for _, value := range users {
+		fmt.Println(value)
+	}
 }

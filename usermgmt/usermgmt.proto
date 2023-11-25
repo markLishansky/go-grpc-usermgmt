@@ -22,7 +22,9 @@ message User {
 
 // message UserManagement
 
-message GetUsersParams {}
+message GetUsersParams {
+  repeated User params = 1
+}
 
 message UserList {
   repeated User users = 1;
