@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	// "fmt"
 	"log"
 	"time"
 
@@ -24,13 +25,13 @@ func main() {
 
 	defer conn.Close()
 	c := pb.NewUserManagementClient(conn)
-	fmt.Println("AAA", c)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
 	var new_users = make(map[string]int32)
 
-	new_users["qqq"] = 12
+	new_users["ass"] = 12
+	new_users["mqqq"] = 2
 	new_users["marik"] = 2
 
 	for name, age := range new_users {
@@ -42,8 +43,8 @@ func main() {
 NAME: %s
 AGE: %v
 ID: %d`, r.GetName(), r.GetAge(), r.GetId())
-	}
-	params := &pb.GetUsersParams{}
+}
+	params := &pb.GetUsersParams{Name: "marik"}
 	r, err := c.GetUsers(ctx, params)
 	if err != nil {
 		log.Fatalf("couldn't retrieve users: %v", err)

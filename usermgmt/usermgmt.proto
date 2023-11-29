@@ -23,7 +23,8 @@ message User {
 // message UserManagement
 
 message GetUsersParams {
-  repeated User params = 1
+  string name = 1;
+  int32 age = 2;
 }
 
 message UserList {
